@@ -1,0 +1,21 @@
+﻿@using Sitecore.XA.Foundation.MarkupDecorator.Extensions
+@using Sitecore.XA.Foundation.SitecoreExtensions.Extensions
+@model Hackathon.XA.Feature.Social.Models.InstagramRenderingModel
+
+@if (Model != null)
+{
+    <div @Html.Sxa().Component("social-instagram-component", Model.Attributes)>
+        <div class="social-instagram-content">
+            <h1>@Model.Title</h1>
+            @if (Model.InstagramItems != null)
+            {
+                foreach (var instagramItem in Model.InstagramItems)
+                {
+                    <div>
+                        @Html.Raw(instagramItem.HtmlEmbed)
+                    </div>
+                }
+            }
+        </div>
+    </div>
+}
